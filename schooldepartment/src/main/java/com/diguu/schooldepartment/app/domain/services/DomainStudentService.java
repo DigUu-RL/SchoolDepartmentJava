@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,6 +19,10 @@ public class DomainStudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    public List<StudentModel> getAll() {
+        return null;
+    }
+
     @Async
     public StudentModel findById(UUID id) throws GlobalException {
         Optional<Student> optional = studentRepository.findById(id);
@@ -26,6 +31,14 @@ public class DomainStudentService {
             throw new GlobalException("Student not found", HttpStatus.NOT_FOUND);
 
         return new StudentModel(optional.get());
+    }
+
+    public void save(StudentModel model) {
+
+    }
+
+    public void delete(StudentModel model) {
+
     }
 
 }

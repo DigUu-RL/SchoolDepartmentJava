@@ -3,18 +3,17 @@ package com.diguu.schooldepartment.app.infra.data.entities;
 import com.diguu.schooldepartment.app.infra.data.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "Student")
-public class Student extends EntityBase {
+public class Student extends EntityBase implements Serializable {
     private String name;
     private String lastName;
     private String cpf;
@@ -45,8 +44,7 @@ public class Student extends EntityBase {
         private StudentBuilder() {
         }
 
-        @Contract(value = " -> new", pure = true)
-        public static @NotNull StudentBuilder getInstance() {
+        public static StudentBuilder getInstance() {
             return new StudentBuilder();
         }
 
@@ -105,7 +103,7 @@ public class Student extends EntityBase {
             return this;
         }
 
-        public @NotNull Student build() {
+        public Student build() {
             Student student = new Student();
             student.setId(id);
             student.setName(name);
