@@ -6,7 +6,6 @@ import com.diguu.schooldepartment.app.infra.middleware.exceptions.GlobalExceptio
 import com.diguu.schooldepartment.app.infra.repositories.interfaces.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +22,6 @@ public class DomainStudentService {
         return null;
     }
 
-    @Async
     public StudentModel findById(UUID id) throws GlobalException {
         Optional<Student> optional = studentRepository.findById(id);
 
